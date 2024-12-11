@@ -1,5 +1,5 @@
 import numpy as np
-
+import re
 
 class Board:
 
@@ -69,5 +69,17 @@ class Board:
         if  (self.count1 < 3 and self.count2 > -3):
             print("It is a draw !!!")
 
+
+def check_user_input(user_num):
+    valid_type_answer = r"[1-3] [1-3]"
+    user_choice = input(f"Enter your choice player {user_num}: ")
+    print(user_choice)
+    if re.search(valid_type_answer, user_choice):
+        return True, user_choice
+    else:
+        # return the call of the function to include 
+        # the returned values when the condition above is true 
+        # otherwise it will implicitly retrun None.
+        return check_user_input(user_num)
 
     
